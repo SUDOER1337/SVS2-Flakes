@@ -1,0 +1,11 @@
+# Nix build outputs
+result
+result-*
+
+# direnv
+.direnv
+
+# Editor
+.idea/
+.vscode/
+*.swp
