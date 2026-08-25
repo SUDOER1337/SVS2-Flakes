@@ -47,6 +47,7 @@ HELP
 
   # -- Find SynthV executable --
   SYNTHV_EXE=$(find "''${SYNTHV_PREFIX}/drive_c" \
+    -name "synthv-studio.exe" -o \
     -name "SynthV*.exe" -o \
     -name "synthesizerv*.exe" -o \
     -name "Synthesizer V*.exe" \

@@ -52,6 +52,7 @@ main() {
 
   SYNTHV_EXE=$(find "${SYNTHV_PREFIX}/drive_c" \
     -name "SynthV*.exe" -o \
+    -name "synthv-studio.exe" -o \
     -name "synthesizerv*.exe" -o \
     -name "Synthesizer V*.exe" \
     2>/dev/null | head -1 || true)
