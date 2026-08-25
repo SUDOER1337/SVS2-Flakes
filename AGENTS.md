@@ -34,7 +34,7 @@ nix develop
 
 # User-facing workflow
 synthv-bootstrap           # create ~/.local/share/synthv prefix
-wine SynthV_Installer.exe  # install SynthV into the prefix
+wine svstudio2-core-setup-latest.exe  # install SynthV into the prefix
 synthv2                    # launch SynthV
 synthv-bootstrap --destroy # remove prefix (requires 'yes' confirmation)
 ```

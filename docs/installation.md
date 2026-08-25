@@ -49,9 +49,9 @@ This creates `~/.local/share/synthv` and initializes a Win64 Wine prefix.
 Place the official installer in the prefix and run it:
 
 ```bash
-cp SynthV_Installer.exe ~/.local/share/synthv/drive_c/
+cp svstudio2-core-setup-latest.exe ~/.local/share/synthv/drive_c/
 cd ~/.local/share/synthv/drive_c
-wine SynthV_Installer.exe
+wine svstudio2-core-setup-latest.exe
 ```
 
 ### 5. Launch

@@ -34,7 +34,7 @@ Environment:
 For initial setup:
   1. Run synthv-bootstrap to create the prefix
   2. Place the SynthV installer in ${SYNTHV_PREFIX}/drive_c/
-  3. Run: wine installer.exe
+  3. Run: wine svstudio2-core-setup-latest.exe
 HELP
 }
 

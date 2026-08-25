@@ -18,7 +18,7 @@ a managed Wine environment for running SynthV with minimal manual setup.
 # Add to your flake inputs, enable the module, rebuild.
 # Then:
 synthv-bootstrap          # create the Wine prefix
-wine SynthV_Installer.exe  # install SynthV
+wine svstudio2-core-setup-latest.exe  # install SynthV
 synthv2                    # launch
 ```
 

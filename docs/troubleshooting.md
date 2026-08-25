@@ -13,7 +13,7 @@ inside the prefix:
 
 ```bash
 cd ~/.local/share/synthv/drive_c
-wine /path/to/SynthV_Installer.exe
+wine /path/to/svstudio2-core-setup-latest.exe
 ```
 
 ### Application fails to start
