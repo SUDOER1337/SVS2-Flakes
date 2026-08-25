@@ -9,7 +9,6 @@
 #
 #   Creates:
 #     - System packages (synthv-env, synthv-bootstrap, synthv2)
-#     - XDG desktop entry for SynthV
 
 let
   cfg = config.services.synthv;
@@ -37,8 +36,8 @@ in
       default = "";
       example = "myuser";
       description = ''
-        Username to configure desktop integration for.
-        Required for the application menu entry.
+        Username for documentation purposes.
+        Desktop integration should be configured via home-manager.
       '';
     };
   };
@@ -49,15 +48,5 @@ in
       pkgs.synthv-bootstrap
       pkgs.synthv-launcher
     ];
-
-    # -- Desktop entry --
-    xdg.desktopEntries."synthv2" = lib.mkIf (cfg.user != "") {
-      name = "Synthesizer V Studio 2";
-      genericName = "AI Singing Synthesis";
-      exec = "synthv2";
-      icon = "synthv";
-      categories = [ "Audio" "AudioVideo" ];
-      comment = "Synthesizer V Studio 2 – AI singing synthesis";
-    };
   };
 }
