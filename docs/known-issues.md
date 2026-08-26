@@ -36,7 +36,15 @@
 
 ## Mitigations
 
-Until URI handler is automated:
+All dependency installation is now automated:
+
+```bash
+synthv-deps              # install DXVK + WebView2
+synthv-deps --dxvk       # install DXVK only
+synthv-deps --webview2   # install WebView2 only
+```
+
+If you need to manually troubleshoot:
 
 1. Install DXVK:
    ```bash

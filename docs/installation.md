@@ -59,23 +59,11 @@ wine svstudio2-core-setup-latest.exe
 SynthV requires DXVK for rendering and WebView2 for the login dialog:
 
 ```bash
-# Install DXVK
-WINEPREFIX=~/.local/share/synthv winetricks dxvk
-
-# Set Windows version for WebView2 installation
-WINEPREFIX=~/.local/share/synthv winetricks win10
-
-# Download and run WebView2 bootstrapper
-wget -O ~/.local/share/synthv/drive_c/MicrosoftEdgeWebview2Setup.exe \
-  "https://go.microsoft.com/fwlink/p/?LinkId=2124703"
-WINEPREFIX=~/.local/share/synthv wine ~/.local/share/synthv/drive_c/MicrosoftEdgeWebview2Setup.exe
-
-# Switch back to Windows 7 (fixes WebView2 rendering in SynthV)
-WINEPREFIX=~/.local/share/synthv winetricks win7
-
-# Kill lingering Edge processes
-WINEPREFIX=~/.local/share/synthv wineserver -k
+synthv-deps
 ```
+
+This installs DXVK, sets up WebView2, and configures the correct Windows
+version for rendering.
 
 ### 6. Launch
 

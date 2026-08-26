@@ -31,6 +31,7 @@
         rec {
           synthv-env = pkgs.synthv-env;
           synthv-bootstrap = pkgs.synthv-bootstrap;
+          synthv-deps = pkgs.synthv-deps;
           synthv-launcher = pkgs.synthv-launcher;
           default = synthv-launcher;
         }

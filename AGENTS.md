@@ -18,7 +18,8 @@ Nix flake that provides a managed Wine environment for running **Synthesizer V S
 Packages:
 - **`synthv-env`** — `wineWow64Packages.stable` + `winetricks` (combined via `symlinkJoin`)
 - **`synthv-bootstrap`** — creates/validates the Wine prefix at `~/.local/share/synthv`
-- **`synthv-launcher`** — the `synthv2` command; searches prefix for `SynthV*.exe`, `synthesizerv*.exe`, `Synthesizer V*.exe`
+- **`synthv-deps`** — installs DXVK + WebView2 for UI rendering and login
+- **`synthv-launcher`** — the `synthv2` command; searches prefix for `synthv-studio.exe`
 
 ## Key Commands
 
@@ -34,13 +35,10 @@ nix develop
 
 # User-facing workflow
 synthv-bootstrap           # create ~/.local/share/synthv prefix
+synthv-deps                # install DXVK + WebView2
 wine svstudio2-core-setup-latest.exe  # install SynthV into the prefix
 synthv2                    # launch SynthV
 synthv-bootstrap --destroy # remove prefix (requires 'yes' confirmation)
-
-# Manual dependency setup (not yet automated)
-WINEPREFIX=~/.local/share/synthv winetricks dxvk
-WINEPREFIX=~/.local/share/synthv winetricks win7  # after WebView2 install
 ```
 
 ## Critical Conventions
