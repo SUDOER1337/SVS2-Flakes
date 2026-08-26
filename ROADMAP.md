@@ -82,7 +82,7 @@ Avoid:
 
 ---
 
-# Phase 0: Research
+# Phase 0: Research ✅
 
 ## Objective
 
@@ -115,13 +115,22 @@ Compatibility information collected.
 
 Required components identified.
 
-Phase 1: Environment Discovery
+## Status (2026-08-27)
 
-Objective
+- Wine 11.0 (wineWow64Packages.stable) works with DXVK
+- DXVK required for Direct2D rendering
+- WebView2 required for login dialog
+- URI handler required for `dreamtonics-synthesizer://` OAuth callback
+
+---
+
+# Phase 1: Environment Discovery ✅
+
+## Objective
 
 Inspect host system.
 
-Tasks
+## Tasks
 
 Determine:
 
@@ -145,21 +154,29 @@ Existing Wine prefixes
 
 Existing launcher scripts
 
-Deliverables
+## Deliverables
 
 Environment report.
 
-Success Criteria:
+## Success Criteria:
 
 Host environment fully understood.
 
-Phase 2: Base Flake Structure
+## Status (2026-08-27)
 
-Objective
+- NixOS host `thallix`, user `doer`
+- Flake-based config at `~/nixos-config`
+- Wine available via `wineWow64Packages.stable`
+
+---
+
+# Phase 2: Base Flake Structure ✅
+
+## Objective
 
 Create reusable project structure.
 
-Tasks
+## Tasks
 
 Create:
 
@@ -185,21 +202,29 @@ Linting
 
 Documentation standards
 
-Deliverables
+## Deliverables
 
 Initial repository structure.
 
-Success Criteria:
+## Success Criteria:
 
 Repository evaluates successfully.
 
-Phase 3: Wine Environment
+## Status (2026-08-27)
 
-Objective
+- 18 files committed and pushed to GitHub
+- Flake evaluates with `nix flake check`
+- Dev shell with nixd + nixfmt + alejandra
+
+---
+
+# Phase 3: Wine Environment ✅
+
+## Objective
 
 Provide managed Wine environment.
 
-Tasks
+## Tasks
 
 Package:
 
@@ -219,21 +244,29 @@ alternative Wine builds
 
 Select default runner.
 
-Deliverables
+## Deliverables
 
 pkgs.synthv-env
 
-Success Criteria:
+## Success Criteria:
 
 Environment launches successfully.
 
-Phase 4: Prefix Management
+## Status (2026-08-27)
 
-Objective
+- `wineWow64Packages.stable` selected (Wine 11.0)
+- `winetricks` available in PATH
+- Kron4ek wine removed (incompatible with wow64)
+
+---
+
+# Phase 4: Prefix Management ✅
+
+## Objective
 
 Provide isolated SynthV Wine prefix.
 
-Tasks
+## Tasks
 
 Create:
 
@@ -259,21 +292,29 @@ Default location:
 
 ~/.local/share/synthv
 
-Deliverables
+## Deliverables
 
 Bootstrap tool.
 
-Success Criteria:
+## Success Criteria:
 
 Prefix created automatically.
 
-Phase 5: Dependency Installation
+## Status (2026-08-27)
 
-Objective
+- Prefix at `~/.local/share/synthv`
+- `system.reg` shows `#arch=win64`
+- Windows version set to win10 (for WebView2 install), then win7 (for runtime)
+
+---
+
+# Phase 5: Dependency Installation ⚠️
+
+## Objective
 
 Install Windows runtime requirements.
 
-Tasks
+## Tasks
 
 Automate:
 
@@ -293,21 +334,39 @@ Installation process
 
 Known issues
 
-Deliverables
+## Deliverables
 
 Automated dependency setup.
 
-Success Criteria:
+## Success Criteria:
 
 Dependencies install cleanly.
 
-Phase 6: SynthV Installation
+## Status (2026-08-27)
 
-Objective
+**Partially completed:**
+
+- DXVK 3.0.2 installed via `winetricks dxvk`
+- WebView2 installed from Microsoft's evergreen bootstrapper
+- Both required for UI rendering + login dialog
+
+**Not yet automated:**
+
+- Steps are manual (need `synthv-deps` package)
+
+**Blocking:**
+
+- Win7 mode needed after WebView2 install (WebView2 renders blank on win10)
+
+---
+
+# Phase 6: SynthV Installation ✅
+
+## Objective
 
 Install proprietary application.
 
-Tasks
+## Tasks
 
 Request installer from user.
 
@@ -331,21 +390,31 @@ Human Action Required
 
 User supplies installer.
 
-Deliverables
+## Deliverables
 
 Working installation.
 
-Success Criteria:
+## Success Criteria:
 
 Application launches.
 
-Phase 7: Authentication Support
+## Status (2026-08-27)
 
-Objective
+- Core installer (`svstudio2-core-setup-latest.exe`) installed
+- Pro installer (`svstudio2-pro-setup-latest.exe`) installed
+- `synthv-studio.exe` found at:
+  `~/.local/share/synthv/drive_c/Program Files/Synthesizer V Studio 2 Pro/`
+- Launcher discovers and runs it
+
+---
+
+# Phase 7: Authentication Support ⚠️
+
+## Objective
 
 Ensure login functionality works.
 
-Tasks
+## Tasks
 
 Investigate:
 
@@ -367,21 +436,31 @@ Human Action Required
 
 User performs login.
 
-Deliverables
+## Deliverables
 
 Functional authentication.
 
-Success Criteria:
+## Success Criteria:
 
 User can authenticate successfully.
 
-Phase 8: Launcher Integration
+## Status (2026-08-27)
 
-Objective
+**Not yet implemented:**
+
+- `dreamtonics-synthesizer://` URI handler required
+- Wine cannot natively handle custom URI schemes
+- Need `.desktop` file + handler script
+
+---
+
+# Phase 8: Launcher Integration ✅
+
+## Objective
 
 Provide user-friendly execution.
 
-Tasks
+## Tasks
 
 Create:
 
@@ -401,21 +480,29 @@ CLI launch
 
 Desktop launch
 
-Deliverables
+## Deliverables
 
 Launcher package.
 
-Success Criteria:
+## Success Criteria:
 
 Single command launches SynthV.
 
-Phase 9: Desktop Integration
+## Status (2026-08-27)
 
-Objective
+- `synthv2` command works
+- Sets `WINEPREFIX`, `WINEDEBUG`, `WINEDLLOVERRIDES`
+- Auto-discovers `synthv-studio.exe` via `find`
+
+---
+
+# Phase 9: Desktop Integration ⏳
+
+## Objective
 
 Integrate with Linux desktop.
 
-Tasks
+## Tasks
 
 Generate:
 
@@ -431,21 +518,30 @@ Verify:
 
 Application menu visibility
 
-Deliverables
+## Deliverables
 
 Desktop integration package.
 
-Success Criteria:
+## Success Criteria:
 
 Application appears in launcher menu.
 
-Phase 10: NixOS Module
+## Status (2026-08-27)
 
-Objective
+**Not started:**
+
+- NixOS module stripped of `xdg.desktopEntries` (home-manager only)
+- Will need home-manager integration or manual `.desktop` file
+
+---
+
+# Phase 10: NixOS Module ✅
+
+## Objective
 
 Provide reusable NixOS module.
 
-Tasks
+## Tasks
 
 Create:
 
@@ -471,21 +567,29 @@ Desktop entries
 
 Environment configuration
 
-Deliverables
+## Deliverables
 
 Reusable module.
 
-Success Criteria:
+## Success Criteria:
 
 Module enables SynthV environment.
 
-Phase 11: Testing
+## Status (2026-08-27)
 
-Objective
+- Module at `modules/synthv.nix`
+- Overlay at `packages/overlay.nix`
+- Both integrated into `~/nixos-config`
+
+---
+
+# Phase 11: Testing ⏳
+
+## Objective
 
 Validate functionality.
 
-Test Matrix
+## Test Matrix
 
 Verify:
 
@@ -511,21 +615,32 @@ Existing installation
 
 Upgrades
 
-Deliverables
+## Deliverables
 
 Test report.
 
-Success Criteria:
+## Success Criteria:
 
 All critical functionality works.
 
-Phase 12: Documentation
+## Status (2026-08-27)
 
-Objective
+**In progress:**
+
+- Launch: ✅ Working
+- Login: ⏳ URI handler not yet implemented
+- UI rendering: ✅ Working (DXVK)
+- WebView2: ✅ Installed and rendering
+
+---
+
+# Phase 12: Documentation ⏳
+
+## Objective
 
 Prepare project for public use.
 
-Tasks
+## Tasks
 
 Write:
 
@@ -541,46 +656,48 @@ Compatibility Notes
 
 Known Issues
 
-Deliverables
+## Deliverables
 
 Complete documentation.
 
-Success Criteria:
+## Success Criteria:
 
 New user can install without developer assistance.
 
-Future Goals
+## Status (2026-08-27)
+
+- README.md: ✅
+- Installation Guide: ✅ (needs dependency steps)
+- Troubleshooting Guide: ✅ (needs DXVK/WebView2 section)
+- Known Issues: ✅ (updated with working status)
+- Compatibility Matrix: ⏳ Not started
+- FAQ: ⏳ Not started
+
+---
+
+## Future Goals
 
 Potential future work:
 
-Home Manager module
+- Home Manager module
+- Multiple Wine profiles
+- Automated compatibility testing
+- Version pinning profiles
+- Community-maintained compatibility database
+- CI evaluation testing
+- URI handler package (`synthv-uri-handler`)
 
-Multiple Wine profiles
+---
 
-Automated compatibility testing
-
-Version pinning profiles
-
-Community-maintained compatibility database
-
-CI evaluation testing
-
-Definition of Done
+## Definition of Done
 
 Project is complete when:
 
-Flake evaluates successfully.
-
-Environment is reproducible.
-
-SynthV launches.
-
-Login works.
-
-Audio works.
-
-Desktop integration works.
-
-Documentation is complete.
-
-User confirms successful installation.
+- [ ] Flake evaluates successfully ✅
+- [ ] Environment is reproducible ✅
+- [ ] SynthV launches ✅
+- [ ] Login works ⏳
+- [ ] Audio works ⏳
+- [ ] Desktop integration works ⏳
+- [ ] Documentation is complete ⏳
+- [ ] User confirms successful installation ⏳

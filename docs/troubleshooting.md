@@ -47,11 +47,34 @@ in the README for the login workflow.
 
 ### Graphics issues
 
-Set Wine to use a virtual desktop if the SynthV window does not render:
+SynthV requires DXVK for Direct2D rendering. If the window appears blank
+or menus don't render:
 
 ```bash
-winecfg
-# → Graphics → Emulate a virtual desktop → 1920x1080
+WINEPREFIX=~/.local/share/synthv winetricks dxvk
+```
+
+### WebView2 not rendering login dialog
+
+SynthV's login uses WebView2 which requires:
+
+1. Windows version set to `win10` for installation
+2. Windows version set to `win7` for runtime rendering
+
+```bash
+# Set to win10 for WebView2 installation
+WINEPREFIX=~/.local/share/synthv winetricks win10
+
+# Download and install WebView2
+wget -O ~/.local/share/synthv/drive_c/MicrosoftEdgeWebview2Setup.exe \
+  "https://go.microsoft.com/fwlink/p/?LinkId=2124703"
+WINEPREFIX=~/.local/share/synthv wine ~/.local/share/synthv/drive_c/MicrosoftEdgeWebview2Setup.exe
+
+# Switch to win7 for rendering
+WINEPREFIX=~/.local/share/synthv winetricks win7
+
+# Kill lingering Edge processes
+WINEPREFIX=~/.local/share/synthv wineserver -k
 ```
 
 ## Getting Help
