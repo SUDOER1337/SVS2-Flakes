@@ -37,6 +37,10 @@ synthv-bootstrap           # create ~/.local/share/synthv prefix
 wine svstudio2-core-setup-latest.exe  # install SynthV into the prefix
 synthv2                    # launch SynthV
 synthv-bootstrap --destroy # remove prefix (requires 'yes' confirmation)
+
+# Manual dependency setup (not yet automated)
+WINEPREFIX=~/.local/share/synthv winetricks dxvk
+WINEPREFIX=~/.local/share/synthv winetricks win7  # after WebView2 install
 ```
 
 ## Critical Conventions
@@ -48,6 +52,9 @@ synthv-bootstrap --destroy # remove prefix (requires 'yes' confirmation)
 - **Launcher**: sets `WINEDLLOVERRIDES=winemenubuilder.exe=d` to suppress Wine desktop dialogs
 - **Module options**: `services.synthv.{enable, winePackage, prefixDir, user}`
 - **Scoring** defaults `WINEARCH=win64` — no win32 support
+- **DXVK**: Required for Direct2D rendering (installed via `winetricks dxvk`)
+- **WebView2**: Required for login dialog; must be installed manually
+- **Windows version**: Use `win10` for WebView2 install, `win7` for runtime
 
 ## Human-in-the-Loop Rules (from ROADMAP.md)
 
