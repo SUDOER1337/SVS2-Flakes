@@ -32,6 +32,7 @@
           synthv-env = pkgs.synthv-env;
           synthv-bootstrap = pkgs.synthv-bootstrap;
           synthv-deps = pkgs.synthv-deps;
+          synthv-uri-handler = pkgs.synthv-uri-handler;
           synthv-launcher = pkgs.synthv-launcher;
           default = synthv-launcher;
         }

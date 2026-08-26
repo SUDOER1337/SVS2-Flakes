@@ -2,10 +2,9 @@
 
 ## Current (Last Updated: 2026-08-27)
 
-- **Login URI Scheme** — SynthV uses `dreamtonics-synthesizer://` for OAuth.
+- **Login URI Scheme** — SynthV uses `dreamtonics-svstudio2://` for OAuth.
   The browser redirects to this URI, but Wine does not natively handle it.
-  A custom `.desktop` URI handler is required to forward the callback.
-  See `docs/authentication.md` for the planned implementation.
+  Run `synthv-uri-handler` to register the MIME handler.
 - **dxvk + WebView2 rendering** — Requires DXVK for Direct2D rendering
   and WebView2 installed separately. Both must be present for the login
   dialog to render (not just display a blank window).

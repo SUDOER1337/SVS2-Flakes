@@ -19,6 +19,7 @@ a managed Wine environment for running SynthV with minimal manual setup.
 # Then:
 synthv-bootstrap          # create the Wine prefix
 synthv-deps               # install DXVK + WebView2
+synthv-uri-handler        # register dreamtonics-svstudio2:// URI scheme
 wine svstudio2-core-setup-latest.exe  # install SynthV
 synthv2                    # launch
 ```
@@ -57,6 +58,7 @@ See [Installation Guide](./docs/installation.md) for detailed steps.
 | `synthv-env`       | Wine + Winetricks combined environment   |
 | `synthv-bootstrap` | Create/manage/validate the Wine prefix   |
 | `synthv-deps`      | Install DXVK + WebView2 dependencies     |
+| `synthv-uri-handler` | Register dreamtonics-svstudio2:// URI scheme |
 | `synthv-launcher`  | Discover and launch SynthV executable    |
 
 ## NixOS Module

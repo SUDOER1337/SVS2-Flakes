@@ -36,6 +36,7 @@ nix develop
 # User-facing workflow
 synthv-bootstrap           # create ~/.local/share/synthv prefix
 synthv-deps                # install DXVK + WebView2
+synthv-uri-handler         # register dreamtonics-svstudio2:// URI scheme
 wine svstudio2-core-setup-latest.exe  # install SynthV into the prefix
 synthv2                    # launch SynthV
 synthv-bootstrap --destroy # remove prefix (requires 'yes' confirmation)

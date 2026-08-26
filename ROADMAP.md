@@ -446,11 +446,16 @@ User can authenticate successfully.
 
 ## Status (2026-08-27)
 
-**Not yet implemented:**
+**Partially implemented:**
 
-- `dreamtonics-synthesizer://` URI handler required
-- Wine cannot natively handle custom URI schemes
-- Need `.desktop` file + handler script
+- `dreamtonics-svstudio2://` URI handler created (`synthv-uri-handler`)
+- Wine registry entries registered for the scheme
+- `.desktop` file with `MimeType=x-scheme-handler/dreamtonics-svstudio2`
+- Shell script forwards URI back to Wine application
+
+**Not yet tested:**
+
+- Needs user to run `synthv-uri-handler` and test login flow
 
 ---
 
